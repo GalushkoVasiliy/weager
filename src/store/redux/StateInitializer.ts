@@ -19,7 +19,8 @@ const createStore = <T extends State>(reducer: Reducer<T>, saga: Saga) => {
   if (CitiesStore.store) {
     throw Error('Already initialized');
   }
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers =
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const middlewares: Middleware[] = [];
 

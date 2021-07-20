@@ -29,6 +29,10 @@ const App = () => {
 
   useEffect(() => {
     console.log(client);
+
+    setTimeout(() => {
+      setIsReady(true);
+    }, 5000);
   }, []);
 
   if (!isReady) {
