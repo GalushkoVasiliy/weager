@@ -1,3 +1,0 @@
-export default {
-  SET_NEW_ITEM_TO_HISTORY: 'SET_NEW_ITEM_TO_HISTORY',
-};

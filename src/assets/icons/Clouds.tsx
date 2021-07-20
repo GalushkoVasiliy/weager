@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Svg, {SvgProps, Path, Circle, Ellipse, G} from 'react-native-svg';
+import Svg, {SvgProps, Path, Ellipse, G} from 'react-native-svg';
 type Props = SvgProps;
 
 const Clouds: React.FunctionComponent<Props> = () => (

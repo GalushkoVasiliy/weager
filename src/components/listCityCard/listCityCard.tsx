@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Text, ActivityIndicator, TouchableOpacity, View} from 'react-native';
-import {COLORS, STRINGS} from '../../config';
+import {STRINGS} from '../../config';
 import {City} from '../../interfaces/interface';
 import styles from './styles';
 import {useLazyQuery} from '@apollo/client';

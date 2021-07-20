@@ -1,4 +1,5 @@
 import React from 'react';
+import {KeyboardType} from 'react-native';
 import {TextInput} from 'react-native';
 import {COLORS} from '../../config';
 import styles from './styles';
@@ -6,7 +7,7 @@ import styles from './styles';
 interface Props {
   label?: string;
   placeholder?: string;
-  keyboardType?: 'numeric' | 'email-address' | 'phone-pad';
+  keyboardType?: KeyboardType;
   multiline?: boolean;
   security?: boolean;
   value: string;

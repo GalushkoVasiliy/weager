@@ -9,16 +9,15 @@ import {CHAPTERS_QUERY} from '../../store/apolloQueries/queries';
 import {City} from '../../interfaces/interface';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, CONSTANT, STRINGS} from '../../config';
+import {connect} from 'react-redux';
+import {historyActions} from '../../store/redux/ducks/history';
 
-import {useActions} from '../../store/redux/hooks/UseActions';
-
-const HomeScreen: React.FunctionComponent = () => {
+const HomeScreen: React.FunctionComponent = ({history, setNewItem}) => {
+  console.log(history);
   const {navigate} = useNavigation();
-  const historyActions = useActions();
 
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState<City | null>(null);
-
   const [getCityByName, {data}] = useLazyQuery(CHAPTERS_QUERY);
 
   useEffect(() => {
@@ -28,10 +27,10 @@ const HomeScreen: React.FunctionComponent = () => {
   useEffect(() => {
     if (data && data.getCityByName && search.length !== 0) {
       setSearchResult(data.getCityByName);
-      historyActions.setItemToHistory(search);
-      setSearch('');
+      setNewItem(search);
+      // setSearch('');
     }
-  }, [data, historyActions, search, search.length]);
+  }, [data, search, search.length, setNewItem]);
 
   const onItemClick = useCallback(
     (name: string) => {
@@ -114,4 +113,13 @@ const HomeScreen: React.FunctionComponent = () => {
   );
 };
 
-export default React.memo(HomeScreen);
+const mapStateToProps = state => {
+  return {
+    loading: !state.initialize.isInitialized,
+    history: state.history.history,
+    isInitialized: state.initialize.isInitialized,
+    setNewItem: historyActions.setHistory,
+  };
+};
+
+export default connect(mapStateToProps)(HomeScreen);
